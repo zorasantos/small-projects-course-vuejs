@@ -29,13 +29,23 @@
         </v-list>
 
       </v-menu>
+      <v-row align="center">
+        <span class="text-uppercase grey--text text--darken-2 ml-6 mr-4">
+          Saldo: {{ funds | currency }}
+        </span>
+      </v-row>
     </v-toolbar-items>
   </v-app-bar>
 </template>
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  computed: {
+    funds () {
+      return this.$store.getters.funds
+    }
+  }
 }
 </script>
 
