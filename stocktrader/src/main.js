@@ -7,7 +7,7 @@ import vuetify from './plugins/vuetify'
 Vue.config.productionTip = false
 
 Vue.filter('currency', value => {
-  return 'R$ ' + value.toLocaleString()
+  return parseFloat(value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 })
 
 new Vue({
