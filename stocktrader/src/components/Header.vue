@@ -20,10 +20,10 @@
         </template>
 
         <v-list>
-          <v-list-item>
+          <v-list-item @click="saveData">
             <v-list-item-title>Salvar Dados</v-list-item-title>
           </v-list-item>
-          <v-list-item>
+          <v-list-item @click="loadDataLocal">
             <v-list-item-title>Carregar Dados</v-list-item-title>
           </v-list-item>
         </v-list>
@@ -49,11 +49,17 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['randomizeStocks']),
+    ...mapActions(['randomizeStocks', 'loadData']),
     endDay () {
       this.randomizeStocks()
+    },
+    saveData () {
+      const { funds, stockPortfolio, stocks } = this.$store.getters
+      this.$http.put('data.json', { funds, stockPortfolio, stocks })
+    },
+    loadDataLocal () {
+      this.loadData()
     }
-
   }
 }
 </script>

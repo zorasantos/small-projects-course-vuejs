@@ -12,6 +12,7 @@
           label="Quantidade" type="number"
           v-model.number="quantity"
           :error="insuficientQuantity || !Number.isInteger(quantity)"
+          v-on:keyup.enter="sellStock"
         />
         <v-btn
           @click="sellStock" :disabled="insuficientQuantity || quantity <= 0 || !Number.isInteger(quantity)"

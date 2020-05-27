@@ -22,6 +22,8 @@ export default {
   },
   created() {
     this.$store.dispatch('initStocks')
+    //carrega os dados do firebase ao iniciar a aplicação - autoral
+    this.$store.dispatch('loadData')
   }
 }
 </script>
